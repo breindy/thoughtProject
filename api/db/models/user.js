@@ -26,8 +26,12 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		{}
 	);
-	User.associate = function(models) {
+	User.associate = (models) => {
 		// associations can be defined here
+		User.hasMany(models.Share, {
+			foreignKey: 'userId',
+			as: 'share'
+		});
 	};
 	return User;
 };
